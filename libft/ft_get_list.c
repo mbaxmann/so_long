@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_get_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 14:13:47 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/16 15:45:33 by mbaxmann         ###   ########.fr       */
+/*   Created: 2021/09/16 14:33:27 by mbaxmann          #+#    #+#             */
+/*   Updated: 2021/09/16 14:37:54 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
-# include "../libft/libft.h"
+t_list	*ft_get_list(t_list *first, int number)
+{
+	t_list	*current;
+	int		len;
 
-int	main(int ac, char **av);
-void	ft_error(char *str);
-char	**ft_init(char **av);
-void	ft_check_ext(char *str);
-void	ft_check_map(char **map);
-int	ft_valide_c(char c);
-t_list	*ft_list_init(char *map);
-char	**ft_fillmap(char *map);
-
-#endif
+	current = first;
+	number--;
+	len = ft_list_len(first);
+	len--;
+	while (number && len)
+	{
+		current = current->next;
+		number--;
+		len--;
+	}
+	return (current);
+}

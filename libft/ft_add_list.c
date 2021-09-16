@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_add_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 14:13:47 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/16 15:45:33 by mbaxmann         ###   ########.fr       */
+/*   Created: 2021/09/16 14:32:24 by mbaxmann          #+#    #+#             */
+/*   Updated: 2021/09/16 15:52:10 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
-# include "../libft/libft.h"
+void	ft_add_list(t_list *first, t_list *to_add)
+{
+	t_list	*current;
 
-int	main(int ac, char **av);
-void	ft_error(char *str);
-char	**ft_init(char **av);
-void	ft_check_ext(char *str);
-void	ft_check_map(char **map);
-int	ft_valide_c(char c);
-t_list	*ft_list_init(char *map);
-char	**ft_fillmap(char *map);
-
-#endif
+	current = first;
+	if (first != to_add)
+	{
+		if (first)
+		{
+			while (current->next != NULL)
+				current = current->next;
+			current->next = to_add;
+		}
+		else
+			first = to_add;
+	}
+}

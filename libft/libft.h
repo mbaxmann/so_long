@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 14:08:58 by mbaxmann          #+#    #+#             */
-/*   Updated: 2020/08/30 18:24:18 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/16 14:39:40 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "get_next_line.h"
+
+typedef struct s_list
+{
+	void			*data;
+	struct s_list	*next;
+}				t_list;
 
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
@@ -52,5 +58,10 @@ int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_reverse_tab(char *res);
+void	ft_free_lst(t_list *first);
+void	ft_add_list(t_list *first, t_list *to_add);
+int		ft_list_len(t_list *first);
+t_list	*ft_get_list(t_list *first, int number);
+t_list	*ft_newlst(void *data);
 
 #endif
