@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:20:47 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/16 18:15:56 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/17 15:38:10 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_fillmap(char *map)
 	i = ft_list_len(first);
 	ret = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!ret)
-		ft_error("malloc");
+		ft_error("malloc", -1, ret);
 	i = 0;
 	current = first;
 	while (current)
@@ -50,12 +50,12 @@ t_list	*ft_list_init(char *map)
 	rd = 1;
 	fd = open(map, O_RDONLY);
 	if (fd < 1)
-		ft_error("fd");
+		ft_error("fd", 0, NULL);
 	while (rd > 0)
 	{
 		rd = get_next_line(fd, &stock);
 		if (!ft_strncmp(stock, "", 1))
-			ft_error("invalid map");
+			rd = -2;
 		else if (!first)
 			first = ft_newlst(ft_strdup(stock));
 		else
@@ -63,7 +63,7 @@ t_list	*ft_list_init(char *map)
 		free(stock);
 	}
 	if (rd == -1)
-		ft_error("gnl");
+		ft_error("gnl", fd, NULL);
 	close(fd);
 	return (first);
 }
@@ -92,7 +92,7 @@ void	ft_check_map(char **map)
 		while (map[i][j])
 		{
 			if (!ft_valide_c(map[i][j]))
-				ft_error("invalid map");
+				ft_error("invalid map", 0, map);
 			j++;
 		}
 		j = 0;
@@ -108,7 +108,7 @@ void	ft_check_ext(char *str)
 	while (str[i] && str[i] != '.')
 		i++;
 	if (ft_strncmp(str + i, ".ber", 5))
-		ft_error("ext");
+		ft_error("ext", 0, NULL);
 }
 
 char	**ft_init(char **av)
@@ -121,7 +121,13 @@ char	**ft_init(char **av)
 	{
 		ft_check_ext(av[1]);
 		map = ft_fillmap(av[1]);
+		if (!ft_mapisclose(map))
+			ft_error("invalid map", 0, map);
+		if (!ft_mapis_rectangular(map))
+			ft_error("invalid map", 0, map);
 		ft_check_map(map);
+		if (!ft_allok(map))
+			ft_error("invalid map", 0, map);
 	}
 	return (map);
 }

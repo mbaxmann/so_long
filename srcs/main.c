@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:17:07 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/16 18:14:34 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/17 15:54:35 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ void	ft_test(char **map)
 	}
 }
 
-void	ft_error(char *str)
+void	ft_error(char *str, int fd, char **map)
 {
+	int	i;
+
+	i = 0;
 	if (!ft_strncmp(str, "invalid map", 11))
 		ft_putendl_fd("Error\nInvalid map", 1);
 	else if (!ft_strncmp(str, "gnl", 3))
@@ -34,6 +37,19 @@ void	ft_error(char *str)
 		ft_putendl_fd("Error\nMalloc failed somewhere", 1);
 	else if (!ft_strncmp(str, "ext", 3))
                 ft_putendl_fd("Error\nWrong extension for map", 1);
+	if (fd)
+		close (fd);
+	if (map && fd == -1)
+		free(map);
+	else if (map)
+	{
+		while (map[i])
+		{
+			free(map[i]);
+			i++;
+		}
+		free(map);
+	}
 	exit(1);
 }
 
@@ -44,6 +60,6 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	map = ft_init(av);
+	ft_engine(map);
 	ft_test(map);
-	ac++;
 }
