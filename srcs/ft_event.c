@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 16:39:50 by user42            #+#    #+#             */
-/*   Updated: 2021/09/19 17:20:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/19 18:20:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_close(void *param)
 {
-	((t_data *)param)->map[0][0] = '1';
+	ft_free_data(param);
 	exit(0);
 	return (1);
 }
@@ -62,11 +62,18 @@ void		ft_move_player(t_data *data, t_dim *pos, int d_y, int d_x)
 	}
 	else if (map[pos->y][pos->x] == 'E')
 	{
+		data->count++;
+		nb = ft_itoa(data->count, 'd');
+		write(1, nb, ft_strlen(nb));
+		write(1, "\n", 1);
+		ft_free_data(data);
 		exit(0);
 	}
 	data->count++;
 	nb = ft_itoa(data->count, 'd');
 	write(1, nb, ft_strlen(nb));
+	write(1, "\n", 1);
+	free(nb);
 }
 
 int		ft_button_event(int keycode, void *param)
@@ -76,6 +83,7 @@ int		ft_button_event(int keycode, void *param)
 	ft_find_player(((t_data *)param)->map, &pos);
 	if (keycode == ESC)
 	{
+		ft_free_data(param);
 		exit(0);
 	}
 	else if (keycode == LEFT)

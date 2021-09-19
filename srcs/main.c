@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:17:07 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/19 16:20:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/19 18:04:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,50 @@ void	ft_error(char *str, int fd, char **map)
 		free(map);
 	}
 	exit(1);
+}
+
+void	ft_free_textur(t_textur *textur)
+{
+	free(textur->img);
+	free(textur);
+}
+
+void	ft_free_img(t_img **img)
+{
+	int i;
+
+	i = 0;
+	while (i < 2)
+	{
+		free(img[i]->img);
+		free(img[i]);
+		i++;
+	}
+	free(img);
+}
+
+void	ft_free_data(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	if (data)
+	{
+		if (data->map)
+		{
+			while (data->map[i])
+				free(data->map[i++]);
+			free(data->map);
+		}
+		free(data->mlx->ptr);
+		free(data->mlx->win);
+		free(data->mlx);
+		ft_free_img(data->img);
+		i = 0;
+		while (i < 5)
+			ft_free_textur(data->textur[i++]);
+		free(data->textur);
+	}
 }
 
 int	main(int ac, char **av)

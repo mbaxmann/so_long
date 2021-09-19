@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:13:47 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/19 17:14:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/19 17:49:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,8 @@ t_mlx	*ft_open_window(char **map);
 void	ft_engine(char **map);
 int	ft_loop(t_data *data);
 void	ft_event(t_data *data);
+void	ft_free_textur(t_textur	*textur);
+void	ft_free_data(t_data *data);
+void	ft_free_img(t_img **img);
 
 #endif

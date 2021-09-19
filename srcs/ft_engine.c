@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 15:54:43 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/19 17:19:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/19 18:12:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,18 +202,22 @@ int	ft_loop(t_data *data)
 {
 	t_img	*tmp;
 
-	ft_setup_img(data->mlx, data->img);
+	if (!data->img)
+	{
+		data->img = (t_img **)malloc(sizeof(t_img *) * 2);
+		ft_setup_img(data->mlx, data->img);
+	}
         ft_load_img(data->mlx, data->img, data->map, data);
         mlx_put_image_to_window(data->mlx->ptr, data->mlx->win, data->img[1]->img, 0, 0);
 	tmp = data->img[1];
         data->img[1] = data->img[0];
-        data->img[0] = data->img[1];
+        data->img[0] = tmp;
 	return (0);
 }
 
 void	ft_setup_data(t_data *data, char **map)
 {
-	data->img = (t_img **)malloc(sizeof(t_img *) * 2);
+	data->img = NULL;
         data->mlx = ft_open_window(map);
 	data->map = map;
 	data->count = 0;
