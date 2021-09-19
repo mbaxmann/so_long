@@ -1,6 +1,6 @@
 OBJS    =       ${SRCS:.c=.o}
 
-SRCS	=	srcs/main.c srcs/ft_init.c srcs/ft_init_2.c srcs/ft_engine.c
+SRCS	=	srcs/main.c srcs/ft_init.c srcs/ft_init_2.c srcs/ft_engine.c srcs/ft_event.c
 
 CC      =       clang
 

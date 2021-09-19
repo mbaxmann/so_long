@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:13:47 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/17 16:57:46 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/19 17:14:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 
+# define UP 122
+# define DOWN 115
+# define RIGHT 100
+# define LEFT 113
+# define ESC 65307
+
 typedef struct	s_mlx
 {
 	void	*ptr;
@@ -31,6 +37,35 @@ typedef struct  s_dim
         int	x;
         int	y;
 }               t_dim;
+
+typedef struct	s_img
+{
+	int			bpp;
+	int			line;
+	int			endian;
+	int			height;
+	int			width;
+	void		*img;
+	char		*pt;
+}		t_img;
+
+
+typedef struct	s_textur
+{
+	void		*img;
+	char		*addr;
+	int			height;
+	int			width;
+}				t_textur;
+
+typedef struct	s_data
+{
+	t_mlx		*mlx;
+	t_img		**img;
+	t_textur	**textur;
+	int		count;
+	char		**map;
+}		t_data;
 
 int	main(int ac, char **av);
 void	ft_error(char *str, int fd, char **map);
@@ -46,5 +81,7 @@ int	ft_mapis_rectangular(char **map);
 int	ft_allok(char **map);
 t_mlx	*ft_open_window(char **map);
 void	ft_engine(char **map);
+int	ft_loop(t_data *data);
+void	ft_event(t_data *data);
 
 #endif
