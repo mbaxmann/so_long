@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 15:54:43 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/19 18:12:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/20 10:54:08 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_mlx	*ft_open_window(char **map)
 {
 	t_mlx	*mlx;
-	int	x_max;
-	int	y_max;
+	int		x_max;
+	int		y_max;
 
 	mlx = (t_mlx *)malloc(sizeof(t_mlx));
 	mlx->ptr = mlx_init();
@@ -32,19 +32,19 @@ t_mlx	*ft_open_window(char **map)
 void	ft_setup_img(t_mlx *mlx, t_img **img)
 {
 	t_dim	window_s;
-	int	i;
+	int		i;
 
 	i = 0;
 	mlx_get_screen_size(mlx->ptr, &(window_s.x), &(window_s.y));
 	while (i < 2)
 	{
-		img[i] =  (t_img *)malloc(sizeof(t_img));
+		img[i] = (t_img *)malloc(sizeof(t_img));
 		img[i]->img = mlx_new_image(mlx->ptr, window_s.x, window_s.y);
 		img[i]->bpp = 32;
 		img[i]->endian = 0;
 		img[i]->line = window_s.x * 4;
 		img[i]->pt = mlx_get_data_addr(img[i]->img, &img[i]->bpp,
-		&img[i]->line, &img[i]->endian);
+				&img[i]->line, &img[i]->endian);
 		img[i]->height = window_s.y;
 		img[i]->width = window_s.x;
 		i++;
@@ -53,8 +53,8 @@ void	ft_setup_img(t_mlx *mlx, t_img **img)
 
 void	ft_load_textur(t_mlx *mlx, t_textur **textur)
 {
-	int	i;
-	int	util[3];
+	int		i;
+	int		util[3];
 	char	*filename;
 
 	i = 0;
@@ -73,17 +73,18 @@ void	ft_load_textur(t_mlx *mlx, t_textur **textur)
 		else if (i == 4)
 			filename = "./textur/player.xpm";
 		textur[i] = (t_textur *)malloc(sizeof(t_textur));
-		textur[i]->img = mlx_xpm_file_to_image(mlx->ptr, filename, &textur[i]->width,
-				&textur[i]->height);
+		textur[i]->img = mlx_xpm_file_to_image(mlx->ptr, filename,
+				&textur[i]->width, &textur[i]->height);
 		util[2] = textur[i]->width * 4;
-		textur[i]->addr = mlx_get_data_addr(textur[i]->img, &util[0], &util[2], &util[1]);
+		textur[i]->addr = mlx_get_data_addr(textur[i]->img,
+				&util[0], &util[2], &util[1]);
 		i++;
 	}
 }
 
 int	ft_limitx(t_img *img, char *offset, int x)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = offset - img->pt;
 	tmp %= img->line;
@@ -92,24 +93,24 @@ int	ft_limitx(t_img *img, char *offset, int x)
 	return (0);
 }
 
-int     ft_limity(t_img *img, char *offset, int y)
+int	ft_limity(t_img *img, char *offset, int y)
 {
-        int	tmp;
+	int	tmp;
 
-        tmp = offset - img->pt;
-        tmp += img->line * y;
-        if (tmp > img->line * img->height)
-                return (1);
-        return (0);
+	tmp = offset - img->pt;
+	tmp += img->line * y;
+	if (tmp > img->line * img->height)
+		return (1);
+	return (0);
 }
 
 void	ft_put_textur(t_img *img, t_dim coord, t_dim squar, t_textur *textur)
 {
-	int	i;
-	int	j;
+	int				i;
+	int				j;
 	unsigned int	pixel;
-	t_dim	ratio;
-	char	*offset;
+	t_dim			ratio;
+	char			*offset;
 
 	i = 0;
 	j = 0;
@@ -152,8 +153,8 @@ int	ft_choose_textur(char c)
 
 int	ft_supp(int big, int small)
 {
-	double i;
-	int	j;
+	double	i;
+	int		j;
 
 	i = (double)big / (double)small;
 	j = big / small;
@@ -169,7 +170,7 @@ void	ft_load_img(t_mlx *mlx, t_img **img, char **map, t_data *data)
 {
 	t_dim	loop;
 	t_dim	squar;
-	int	n;
+	int		n;
 
 	loop.x = 0;
 	loop.y = 0;
