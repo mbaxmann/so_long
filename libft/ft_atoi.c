@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 14:35:00 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/13 18:15:58 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/20 10:28:30 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	ft_atoi(const char *str)
 			minus = ft_isminus(str[i], &i);
 		while (str[i] >= '0' && str[i] <= '9' && res * 10 < 2147483648)
 			res = res * 10 + (str[i++] - '0');
-		if ((res > 2147483648 || str[i] >= '0' && str[i] <= '9') && minus == -1)
+		if (res > 2147483648 || (str[i] >= '0' && str[i] <= '9' && minus == -1))
 			return (0);
-		if ((res > 2147483647 || str[i] >= '0') && str[i] <= '9' && minus == 1)
+		if (res > 2147483647 || (str[i] >= '0' && str[i] <= '9' && minus == 1))
 			return (-1);
 		return (res * minus);
 	}

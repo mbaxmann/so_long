@@ -6,21 +6,11 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:17:07 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/19 18:04:12 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/20 10:43:48 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	ft_test(char **map)
-{
-	int	i = 0;
-	while (map[i])
-	{
-		printf("%s\n", map[i]);
-		i++;
-	}
-}
 
 void	ft_error(char *str, int fd, char **map)
 {
@@ -36,7 +26,7 @@ void	ft_error(char *str, int fd, char **map)
 	else if (!ft_strncmp(str, "malloc", 6))
 		ft_putendl_fd("Error\nMalloc failed somewhere", 1);
 	else if (!ft_strncmp(str, "ext", 3))
-                ft_putendl_fd("Error\nWrong extension for map", 1);
+		ft_putendl_fd("Error\nWrong extension for map", 1);
 	if (fd)
 		close (fd);
 	if (map && fd == -1)
@@ -44,10 +34,7 @@ void	ft_error(char *str, int fd, char **map)
 	else if (map)
 	{
 		while (map[i])
-		{
-			free(map[i]);
-			i++;
-		}
+			free(map[i++]);
 		free(map);
 	}
 	exit(1);
@@ -61,7 +48,7 @@ void	ft_free_textur(t_textur *textur)
 
 void	ft_free_img(t_img **img)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 2)

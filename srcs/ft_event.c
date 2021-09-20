@@ -6,23 +6,23 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 16:39:50 by user42            #+#    #+#             */
-/*   Updated: 2021/09/19 18:20:43 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/20 10:35:24 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int		ft_close(void *param)
+int	ft_close(void *param)
 {
 	ft_free_data(param);
 	exit(0);
 	return (1);
 }
 
-void		ft_find_player(char **map, t_dim *pos)
+void	ft_find_player(char **map, t_dim *pos)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -42,11 +42,10 @@ void		ft_find_player(char **map, t_dim *pos)
 	}
 }
 
-void		ft_move_player(t_data *data, t_dim *pos, int d_y, int d_x)
+void	ft_move_player(t_data *data, t_dim *pos, int d_y, int d_x)
 {
 	t_dim	stock;
 	char	**map;
-	char	*nb;
 
 	stock.x = pos->x;
 	stock.y = pos->y;
@@ -63,20 +62,15 @@ void		ft_move_player(t_data *data, t_dim *pos, int d_y, int d_x)
 	else if (map[pos->y][pos->x] == 'E')
 	{
 		data->count++;
-		nb = ft_itoa(data->count, 'd');
-		write(1, nb, ft_strlen(nb));
-		write(1, "\n", 1);
+		printf("%d\n", data->count);
 		ft_free_data(data);
 		exit(0);
 	}
 	data->count++;
-	nb = ft_itoa(data->count, 'd');
-	write(1, nb, ft_strlen(nb));
-	write(1, "\n", 1);
-	free(nb);
+	printf("%d\n", data->count);
 }
 
-int		ft_button_event(int keycode, void *param)
+int	ft_button_event(int keycode, void *param)
 {
 	t_dim	pos;
 

@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:20:47 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/17 15:38:10 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/20 10:39:47 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**ft_fillmap(char *map)
 	t_list	*first;
 	t_list	*current;
 	char	**ret;
-	int	i;
+	int		i;
 
 	ret = NULL;
 	first = ft_list_init(map);
@@ -42,8 +42,8 @@ t_list	*ft_list_init(char *map)
 {
 	t_list	*first;
 	char	*stock;
-	int	fd;
-	int	rd;
+	int		fd;
+	int		rd;
 
 	stock = NULL;
 	first = NULL;
@@ -102,7 +102,7 @@ void	ft_check_map(char **map)
 
 void	ft_check_ext(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && str[i] != '.')

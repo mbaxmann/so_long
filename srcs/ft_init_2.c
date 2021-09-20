@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 15:02:14 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/17 15:38:24 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/20 10:41:29 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_mapis_rectangular(char **map)
 
 int	ft_lineiswall(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])

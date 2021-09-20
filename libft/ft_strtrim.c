@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 10:52:31 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/13 17:54:25 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/20 10:30:21 by mbaxmann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_is_set(char const *s1, char const *set, int i)
 	j = 0;
 	k = 1;
 	if (s1[i] == 0)
-		k == -1;
+		k = -1;
 	if (s1[i] == 0)
 		i--;
 	if (!set)
