@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:17:07 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/20 10:43:48 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/20 15:52:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,5 @@ int	main(int ac, char **av)
 		return (0);
 	map = ft_init(av);
 	ft_engine(map);
-	ft_test(map);
+	return (0);
 }

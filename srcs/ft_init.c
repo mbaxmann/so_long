@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:20:47 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/20 10:39:47 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/20 15:48:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,36 +36,6 @@ char	**ft_fillmap(char *map)
 	ret[i] = NULL;
 	ft_free_lst(first);
 	return (ret);
-}
-
-t_list	*ft_list_init(char *map)
-{
-	t_list	*first;
-	char	*stock;
-	int		fd;
-	int		rd;
-
-	stock = NULL;
-	first = NULL;
-	rd = 1;
-	fd = open(map, O_RDONLY);
-	if (fd < 1)
-		ft_error("fd", 0, NULL);
-	while (rd > 0)
-	{
-		rd = get_next_line(fd, &stock);
-		if (!ft_strncmp(stock, "", 1))
-			rd = -2;
-		else if (!first)
-			first = ft_newlst(ft_strdup(stock));
-		else
-			ft_add_list(first, ft_newlst(ft_strdup(stock)));
-		free(stock);
-	}
-	if (rd == -1)
-		ft_error("gnl", fd, NULL);
-	close(fd);
-	return (first);
 }
 
 int	ft_valide_c(char c)
