@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 16:39:50 by user42            #+#    #+#             */
-/*   Updated: 2021/09/20 10:35:24 by mbaxmann         ###   ########.fr       */
+/*   Updated: 2021/09/22 11:25:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,11 @@ void	ft_move_player(t_data *data, t_dim *pos, int d_y, int d_x)
 	{
 		map[pos->y][pos->x] = 'P';
 		map[stock.y][stock.x] = '0';
-	}
-	else if (map[pos->y][pos->x] == 'E')
-	{
 		data->count++;
 		printf("%d\n", data->count);
-		ft_free_data(data);
-		exit(0);
 	}
-	data->count++;
-	printf("%d\n", data->count);
+	else if (map[pos->y][pos->x] == 'E')
+		ft_is_win(data);
 }
 
 int	ft_button_event(int keycode, void *param)

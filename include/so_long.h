@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:13:47 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/20 17:25:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/22 12:07:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ void	ft_put_textur(t_img *img, t_dim coord, t_dim squar, t_textur *textur);
 void	ft_load_img(t_mlx *mlx, t_img **img, char **map, t_data *data);
 void	ft_load_img_2(t_data *data, t_dim squar);
 void	ft_setup_data(t_data *data, char **map);
+void	ft_set_var(int *var, char *map);
+void	ft_is_win(t_data *data);
+void	ft_list_init_2(int *var, char **stock, t_list **first);
+void	ft_skip_empty_line(int *var, char **stock);
 char	**ft_init(char **av);
 char	*ft_choose_file(int i);
 char	*ft_setup_offset(t_img *img, t_dim coord, t_dim squar);

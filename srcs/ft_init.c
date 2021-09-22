@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/16 14:20:47 by mbaxmann          #+#    #+#             */
-/*   Updated: 2021/09/20 15:48:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/22 11:33:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ void	ft_check_ext(char *str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i] && str[i] != '.')
-		i++;
+	i = ft_strlen(str) - 4;
 	if (ft_strncmp(str + i, ".ber", 5))
 		ft_error("ext", 0, NULL);
 }
