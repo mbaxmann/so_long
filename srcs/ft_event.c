@@ -6,7 +6,7 @@
 /*   By: mbaxmann <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/19 16:39:50 by user42            #+#    #+#             */
-/*   Updated: 2021/09/22 11:25:26 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/23 17:44:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,5 @@ int	ft_button_event(int keycode, void *param)
 void	ft_event(t_data *data)
 {
 	mlx_hook(data->mlx->win, 2, 1L << 0, &ft_button_event, data);
-	mlx_hook(data->mlx->win, 17, 1L << 17, &ft_close, data);
+	mlx_hook(data->mlx->win, 33, 1L << 17, &ft_close, data);
 }
